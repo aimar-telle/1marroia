@@ -1,7 +1,3 @@
-//Alain commit proba
-//JONP commit proba
-//Aimar commit proba
-
 package presentation;
 
 
@@ -245,8 +241,7 @@ public class FlightBooking extends JFrame {
 		lookforFlights.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				bookFlight.setEnabled(true);
-				flightInfo.removeAllElements();;
-				bookFlight.setText("");
+				flightInfo.removeAllElements();
 				
 				java.util.Date date =newDate(Integer.parseInt(year.getText()),months.getSelectedIndex(),Integer.parseInt(day.getText()));
 				 
@@ -256,6 +251,9 @@ public class FlightBooking extends JFrame {
 					flightInfo.addElement(flights.next()); 
 				if (concreteFlightCollection.isEmpty()) searchResult.setText("No flights in that city in that date");
 				else searchResult.setText("Choose an available flight in this list:");
+
+				bookFlight.setText("Book: " + (String)flightList.getSelectedItem().toString());
+
 			}
 		});
 		lookforFlights.setBounds(81, 90, 261, 40);
@@ -266,7 +264,8 @@ public class FlightBooking extends JFrame {
 		contentPane.add(jLabelResult);
 		
 		
-		bookFlight = new JButton("");
+		bookFlight = new JButton("Book flight");
+		bookFlight.setEnabled(false);
 		bookFlight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int num=0;
