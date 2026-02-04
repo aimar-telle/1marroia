@@ -215,16 +215,21 @@ public class FlightBooking extends JFrame {
 		fareButtonGroup.add(bussinesTicket);
 		bussinesTicket.setBounds(99, 238, 101, 23);
 		contentPane.add(bussinesTicket);
+		bussinesTicket.setEnabled(false);
 		
 		firstTicket = new JRadioButton("First");
 		fareButtonGroup.add(firstTicket);
 		firstTicket.setBounds(202, 238, 77, 23);
 		contentPane.add(firstTicket);
+		firstTicket.setEnabled(false);
+
 		
 		touristTicket = new JRadioButton("Tourist");
 		fareButtonGroup.add(touristTicket);
 		touristTicket.setBounds(278, 238, 77, 23);
 		contentPane.add(touristTicket);
+		touristTicket.setEnabled(false);
+
 		
 		ActionListener seatListener = new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -242,7 +247,6 @@ public class FlightBooking extends JFrame {
 		lookforFlights = new JButton("Look for Concrete Flights");
 		lookforFlights.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				bookFlight.setEnabled(true);
 				flightInfo.removeAllElements();
 				
 				
@@ -325,6 +329,13 @@ public class FlightBooking extends JFrame {
 				if (error) bookFlight.setText("Error: There were no seats available!");
 				else bookFlight.setText("Booked. #seat left: "+(num-1));
 				bookFlight.setEnabled(false);
+				
+				firstTicket.setEnabled(false);
+				bussinesTicket.setEnabled(false);
+				touristTicket.setEnabled(false);
+				
+				
+				flightInfo.removeAllElements();				
 			}
 		});
 		bookFlight.setBounds(31, 273, 399, 40);
