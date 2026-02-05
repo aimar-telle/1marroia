@@ -120,7 +120,7 @@ public class FlightManager implements FlightManagerInterface{
 			for (Flight a : flightsDB) {
 				if ((a.getArrivingCity().equals(arrivingCity))&&(a.getDepartingCity().equals(departingCity)))
 					for (ConcreteFlight c : a.getConcreteFlights())
-						if (c.getDate().equals(date)) res.add(c);
+						if (c.getDate().equals(date) && (c.getFirstNumber() > 0 || c.getBussinesNumber() > 0 || c.getTouristNumber() > 0)) res.add(c);
 						
 			}
 			return res;				
